@@ -1,0 +1,2 @@
+glaip-sdk==0.0.2
+pathlib
