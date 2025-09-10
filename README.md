@@ -16,6 +16,10 @@ Execute multiple AIP SDK agent test cases in parallel from a CSV file with progr
    ```bash
    pip install -r requirements.txt
    ```
+   Or, using `make`:
+   ```bash
+   make install
+   ```
 
 2. **Create test cases file** (`data/test_cases.csv`):
    ```csv
@@ -33,15 +37,40 @@ Execute multiple AIP SDK agent test cases in parallel from a CSV file with progr
    ```bash
    # Run all test cases
    python main.py
-   
+
    # Run specific IDs
    python main.py --ids "1,3,5"
-   
+
    # Run with 3 workers
    python main.py --workers 3
-   
+
    # List available test cases
    python main.py --list
+   ```
+   Or, using `make run`:
+   ```bash
+   # Run all test cases
+   make run
+
+   # Run specific IDs
+   make run ARGS="--ids \"1,3,5\""
+
+   # Run with 3 workers
+   make run ARGS="--workers 3"
+
+   # List available test cases
+   make run ARGS="--list"
+   ```
+
+5. **Update agent list from source (optional):**
+   ```bash
+   # This will update data/agents.csv with the latest agent info
+   python update.py
+   ```
+
+   Or, if using `make`:
+   ```bash
+   make update
    ```
 
 ## Command Line Options
@@ -62,42 +91,3 @@ Execute multiple AIP SDK agent test cases in parallel from a CSV file with progr
 - **Logs**: `test_execution.log` with detailed execution logs
 
 ## Example Output
-
-```
-🚀 Starting PARALLEL execution of 12 test cases
-⚡ Running up to 5 test cases simultaneously
-
-📊 Progress: 1/12 test cases completed
-📊 Progress: 2/12 test cases completed
-...
-📊 Progress: 12/12 test cases completed
-
-🎉 PARALLEL execution completed: 10/12 successful
-
-============================================================
-📊 EXECUTION SUMMARY 📊
-============================================================
-📈 Total test cases: 12
-✅ Successful: 10
-❌ Failed: 2
-📊 Success rate: 83.3%
-============================================================
-```
-
-## Requirements
-
-- Python 3.7+
-- AIP SDK installed and configured
-- Valid agent IDs in your CSV file
-
-## Troubleshooting
-
-- **Agent not found**: Verify agent IDs in your CSV file
-- **Permission errors**: Check write access to output directory
-- **Timeout errors**: Some agents may take longer than 5 minutes
-- **CSV format issues**: Ensure proper comma-separated formatting
-
-For detailed logs, check `test_execution.log`.
-
-## GL AIP SDK Guide
-For more references, please refer to this [link](https://gdplabs.gitbook.io/ai-agents-platform/gl-aip-sdk/get-started/quick-start)
