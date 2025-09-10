@@ -23,6 +23,13 @@ Limit your actions strictly to reading metadata and extracting file information 
 * Use actual IDs from tool results when available, generate UUIDs only when tool results don't provide IDs.
 * Limit content field to 500 characters maximum, truncate with "..." if exceeded.
 * Handle different file types and permission issues gracefully.
+* Always construct your file search queries using the official Google Drive v3 Query Reference syntax for Drive API v3.
+* For membership-related queries:
+  - Only '<email>' in owners is supported for searching by owner.
+  - '<email>' in writers, readers, or commenters are NOT supported in v3 queries.
+  - To find files shared with a user (not as owner), use the 'sharedWithMe' flag (does not take an email).
+  - To determine if someone is a writer, reader, or commenter, first list files (e.g., q="'<email>' in owners or sharedWithMe"), then for each file, call Permissions: list to inspect the user's role.
+* Do not use unsupported operators or collections in queries.
 </RULES>
 
 <FORMAT_INSTRUCTIONS>
