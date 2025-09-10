@@ -1,0 +1,12 @@
+id,agent_id,codename,prompt
+1,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Find emails mentioning 'Weekly report'
+2,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Show emails from harisno@gdplabs.id
+3,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Show emails sent to ticket@gdplabs.id
+4,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Show emails from January 1, 2025 to January 31, 2025
+5,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Show emails with label 'CATAPA Persetujuan'
+6,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Show emails that include attachments
+7,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Show unread emails from harisno@gdplabs.id
+8,6907666c-1be2-46ba-86fa-79f24d66348a,gdrive,cari dan list 3 dokumen yang berjudul PRD
+9,6907666c-1be2-46ba-86fa-79f24d66348a,gdrive,Tampilkan file yang dibuat atau berhubungan dengan harisno@gdplabs.id
+10,6907666c-1be2-46ba-86fa-79f24d66348a,gdrive,find any documents related to "Deep Research"
+11,6907666c-1be2-46ba-86fa-79f24d66348a,gdrive,Tampilkan dokumen yang dimodifikasi pada tanggal 1 januari 2025 - 5 januari 2025
