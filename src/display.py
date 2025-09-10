@@ -5,6 +5,8 @@ Display utilities for showing execution results
 import logging
 from .utils import Colors
 
+logger = logging.getLogger(__name__)
+
 
 def display_execution_summary(results, output_dir):
     """Display the final execution summary"""
@@ -46,9 +48,7 @@ def display_execution_summary(results, output_dir):
 
 
 def log_execution_info(args):
-    """Log execution configuration information"""
-    logger = logging.getLogger(__name__)
-    
+    """Log execution configuration information"""    
     logger.info(f"Starting AIP Test Executor")
     logger.info(f"Test cases file: {args.test_cases}")
     logger.info(f"Output directory: {args.output}")

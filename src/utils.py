@@ -7,6 +7,8 @@ import threading
 import logging
 from datetime import datetime
 
+logger = logging.getLogger()
+
 
 class Colors:
     """Color codes for terminal output"""
@@ -51,8 +53,7 @@ class ColoredFormatter(logging.Formatter):
 
 def setup_logging():
     """Configure logging with colors"""
-    # Create logger
-    logger = logging.getLogger(__name__)
+    # Get the root logger to ensure all modules can use logging
     logger.setLevel(logging.INFO)
     
     # Clear any existing handlers
@@ -62,7 +63,7 @@ def setup_logging():
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setLevel(logging.INFO)
     console_formatter = ColoredFormatter(
-        '%(asctime)s - %(levelname)s - %(message)s',
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         datefmt='%H:%M:%S'
     )
     console_handler.setFormatter(console_formatter)
@@ -71,12 +72,12 @@ def setup_logging():
     file_handler = logging.FileHandler('test_execution.log')
     file_handler.setLevel(logging.INFO)
     file_formatter = logging.Formatter(
-        '%(asctime)s - %(levelname)s - %(message)s',
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
     file_handler.setFormatter(file_formatter)
     
-    # Add handlers to logger
+    # Add handlers to root logger
     logger.addHandler(console_handler)
     logger.addHandler(file_handler)
     
@@ -107,7 +108,6 @@ def parse_id_list(id_string):
                 start, end = map(int, part.split('-'))
                 ids.update(str(i) for i in range(start, end + 1))
             except ValueError:
-                logger = logging.getLogger(__name__)
                 logger.warning(f"Invalid range format: {part}")
         else:
             # Handle single ID

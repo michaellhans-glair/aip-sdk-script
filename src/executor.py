@@ -8,9 +8,11 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import logging
 
 from .utils import thread_safe_print, Colors, sanitize_filename
 
+logger = logging.getLogger(__name__)
 
 class AIPTestExecutor:
     """Main class for executing AIP SDK test cases"""
@@ -39,21 +41,18 @@ class AIPTestExecutor:
                     if self.specific_ids is None or test_case['id'] in self.specific_ids:
                         test_cases.append(test_case)
             
-            import logging
-            logger = logging.getLogger(__name__)
+            
             if self.specific_ids:
                 logger.info(f"Loaded {len(test_cases)} test cases (filtered by IDs: {self.specific_ids}) from {self.test_cases_file}")
             else:
                 logger.info(f"Loaded {len(test_cases)} test cases from {self.test_cases_file}")
             return test_cases
         except FileNotFoundError:
-            import logging
-            logger = logging.getLogger(__name__)
+            
             logger.error(f"Test cases file '{self.test_cases_file}' not found")
             return []
         except Exception as e:
-            import logging
-            logger = logging.getLogger(__name__)
+            
             logger.error(f"Error reading test cases: {e}")
             return []
     
@@ -76,8 +75,7 @@ class AIPTestExecutor:
                 '--verbose'
             ]
             
-            import logging
-            logger = logging.getLogger(__name__)
+            
             logger.info(f"[ID {test_case_id}] Executing: {' '.join(cmd)}")
             
             # Run the command and capture output (no real-time display)
@@ -96,8 +94,7 @@ class AIPTestExecutor:
             }
             
         except subprocess.TimeoutExpired:
-            import logging
-            logger = logging.getLogger(__name__)
+            
             logger.error(f"[ID {test_case_id}] Timeout executing agent {agent_id}")
             return {
                 'success': False,
@@ -106,8 +103,7 @@ class AIPTestExecutor:
                 'return_code': -1
             }
         except Exception as e:
-            import logging
-            logger = logging.getLogger(__name__)
+            
             logger.error(f"[ID {test_case_id}] Error executing agent {agent_id}: {e}")
             return {
                 'success': False,
@@ -135,19 +131,16 @@ class AIPTestExecutor:
                 f.write(execution_result['stderr'])
                 f.write("\n" + "-" * 50 + "\n")
             
-            import logging
-            logger = logging.getLogger(__name__)
+            
             logger.info(f"Result saved to: {output_file}")
             
         except Exception as e:
-            import logging
-            logger = logging.getLogger(__name__)
+            
             logger.error(f"Error saving result to {output_file}: {e}")
     
     def run_test_case(self, test_case):
         """Run a single test case"""
-        import logging
-        logger = logging.getLogger(__name__)
+        
         logger.info(f"Running test case {test_case['id']}: {test_case['codename']}")
         
         # Record start time
@@ -183,9 +176,9 @@ class AIPTestExecutor:
         """Run all test cases in parallel"""
         test_cases = self.read_test_cases()
         
+        
+
         if not test_cases:
-            import logging
-            logger = logging.getLogger(__name__)
             logger.error("No test cases to execute")
             return
         
@@ -194,8 +187,6 @@ class AIPTestExecutor:
         thread_safe_print(f"{Colors.BOLD}{Colors.BLUE}📊 AIP agents will run with --verbose flag for detailed output{Colors.END}")
         thread_safe_print()
         
-        import logging
-        logger = logging.getLogger(__name__)
         logger.info(f"Starting parallel execution of {len(test_cases)} test cases with {max_workers} workers")
         
         results = {
@@ -284,14 +275,13 @@ class AIPTestExecutor:
         """Run all test cases sequentially (original behavior)"""
         test_cases = self.read_test_cases()
         
+        
+
         if not test_cases:
-            import logging
-            logger = logging.getLogger(__name__)
             logger.error("No test cases to execute")
             return
         
         thread_safe_print(f"\n{Colors.BOLD}{Colors.CYAN}🚀 Starting SEQUENTIAL execution of {len(test_cases)} test cases{Colors.END}")
-        logger = logging.getLogger(__name__)
         logger.info(f"Starting sequential execution of {len(test_cases)} test cases")
         
         results = {
@@ -372,11 +362,9 @@ class AIPTestExecutor:
             with open(summary_file, 'w', encoding='utf-8') as f:
                 json.dump(results, f, indent=2, ensure_ascii=False)
             
-            import logging
-            logger = logging.getLogger(__name__)
+            
             logger.info(f"Summary saved to: {summary_file}")
             
         except Exception as e:
-            import logging
-            logger = logging.getLogger(__name__)
+            
             logger.error(f"Error saving summary: {e}")
