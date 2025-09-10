@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 # Add src directory to Python path
-sys.path.insert(0, str(Path(__file__).parent / 'src'))
+sys.path.insert(0, str(Path(__file__).parent / "src"))
 
 from src.utils import setup_logging
 from src.cli import parse_arguments
@@ -22,25 +22,25 @@ def main():
     """Main entry point for the AIP SDK Test Script"""
     # Setup logging
     setup_logging()
-    
+
     # Parse command line arguments
     args = parse_arguments()
     if args is None:  # List command was executed
         return
-    
+
     # Log execution information
     log_execution_info(args)
-    
+
     # Create executor and run tests
     executor = AIPTestExecutor(args.test_cases, args.output, args.specific_ids)
-    
+
     if args.sequential:
         # Run sequentially
         results = executor.run_all_tests_sequential()
     else:
         # Run in parallel
         results = executor.run_all_tests(args.workers)
-    
+
     # Display results
     display_execution_summary(results, args.output)
 
