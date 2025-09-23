@@ -16,6 +16,10 @@ Execute multiple AIP SDK agent test cases in parallel from a CSV file with progr
    ```bash
    pip install -r requirements.txt
    ```
+   Or, using `make`:
+   ```bash
+   make install
+   ```
 
 2. **Create test cases file** (`data/test_cases.csv`):
    ```csv
@@ -33,15 +37,40 @@ Execute multiple AIP SDK agent test cases in parallel from a CSV file with progr
    ```bash
    # Run all test cases
    python main.py
-   
+
    # Run specific IDs
    python main.py --ids "1,3,5"
-   
+
    # Run with 3 workers
    python main.py --workers 3
-   
+
    # List available test cases
    python main.py --list
+   ```
+   Or, using `make run`:
+   ```bash
+   # Run all test cases
+   make run
+
+   # Run specific IDs
+   make run ARGS="--ids \"1,3,5\""
+
+   # Run with 3 workers
+   make run ARGS="--workers 3"
+
+   # List available test cases
+   make run ARGS="--list"
+   ```
+
+5. **Update agent list from source (optional):**
+   ```bash
+   # This will update data/agents.csv with the latest agent info
+   python update.py
+   ```
+
+   Or, if using `make`:
+   ```bash
+   make update
    ```
 
 ## Command Line Options

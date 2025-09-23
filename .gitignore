@@ -117,3 +117,6 @@ cython_debug/
 # Project-specific
 output/
 test_execution.log
+.env
+
+.ruff_cache/
