@@ -3,7 +3,3 @@ id,name,type,framework,version
 d7391163-9ac9-4026-98aa-c1b8b138fe8a,"[SS v2] Google Calendar Agent",config,langchain,1.0.0
 0f5c377c-881e-4b0d-a0f6-118e62afc461,"[SS v2] Google Drive Agent",config,langchain,1.0.0
 b944ae0d-e280-4ff9-b16f-9c543ed0ce73,"[SS v2] Google Mail Agent",config,langchain,1.0.0
-fbb3dd11-465d-4ca2-80a0-02ccf6ef8b9d,"[SS] Github Agent",config,langchain,1.0.0
-22b5d8f6-0f99-4c5c-b8fd-d829c2c18d78,"[SS] Google Calendar Agent",config,langchain,1.0.0
-6907666c-1be2-46ba-86fa-79f24d66348a,"[SS] Google Drive Agent",config,langchain,1.0.0
-ecca3133-e89a-49e2-8e77-03a68d13c648,"[SS] Google Mail Agent",config,langchain,1.0.0

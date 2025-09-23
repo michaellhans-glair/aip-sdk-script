@@ -1,12 +1,24 @@
 id,agent_id,codename,prompt
-1,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Find emails mentioning 'Weekly report'
-2,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Show emails from harisno@gdplabs.id
-3,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Show emails sent to ticket@gdplabs.id
-4,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Show emails from January 1, 2025 to January 31, 2025
-5,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Show emails with label 'CATAPA Persetujuan'
-6,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Show emails that include attachments
-7,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Show unread emails from harisno@gdplabs.id
-8,6907666c-1be2-46ba-86fa-79f24d66348a,gdrive,cari dan list 3 dokumen yang berjudul PRD
-9,6907666c-1be2-46ba-86fa-79f24d66348a,gdrive,Tampilkan file yang dibuat atau berhubungan dengan harisno@gdplabs.id
-10,6907666c-1be2-46ba-86fa-79f24d66348a,gdrive,find any documents related to "Deep Research"
-11,6907666c-1be2-46ba-86fa-79f24d66348a,gdrive,Tampilkan dokumen yang dimodifikasi pada tanggal 1 januari 2025 - 5 januari 2025
+1,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Find emails mentioning 'Weekly report'
+2,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Show emails from harisno@gdplabs.id
+3,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Show emails sent to ticket@gdplabs.id
+4,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Show emails from January 1, 2025 to January 31, 2025
+5,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Show emails with label 'CATAPA Persetujuan'
+6,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Show emails that include attachments
+7,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Show unread emails from harisno@gdplabs.id
+8,0f5c377c-881e-4b0d-a0f6-118e62afc461,gdrive,cari dan list 3 dokumen yang berjudul PRD
+9,0f5c377c-881e-4b0d-a0f6-118e62afc461,gdrive,Tampilkan file yang dibuat atau berhubungan dengan harisno@gdplabs.id
+10,0f5c377c-881e-4b0d-a0f6-118e62afc461,gdrive,find any documents related to "Deep Research"
+11,0f5c377c-881e-4b0d-a0f6-118e62afc461,gdrive,Tampilkan dokumen yang dimodifikasi pada tanggal 1 januari 2025 - 5 januari 2025
+12,0f5c377c-881e-4b0d-a0f6-118e62afc461,gdrive,Find any documents related with BOSA MCP
+13,9c0ae488-4d87-4b5c-a91f-5d3b255b2c02,github,Find repositories with 'smart search' in the name
+14,9c0ae488-4d87-4b5c-a91f-5d3b255b2c02,github,Find open issues mentioning 'authentication error'
+15,9c0ae488-4d87-4b5c-a91f-5d3b255b2c02,github,Show closed issues in repo smart-search
+16,9c0ae488-4d87-4b5c-a91f-5d3b255b2c02,github,Show open issues in repo smart-search
+17,9c0ae488-4d87-4b5c-a91f-5d3b255b2c02,github,Find pull requests mentioning 'refactor API'
+18,d7391163-9ac9-4026-98aa-c1b8b138fe8a,gcalendar,Tampilkan meeting di minggu ini dari hari senin sampai jumat (pada jam kerja)
+19,d7391163-9ac9-4026-98aa-c1b8b138fe8a,gcalendar,Tampilkan rapat antara Senin 00:00 sampai Minggu 23:59 zona waktu Asia/Jakarta.
+20,d7391163-9ac9-4026-98aa-c1b8b138fe8a,gcalendar,Cari meeting dengan michael.hans@gdplabs.id
+21,d7391163-9ac9-4026-98aa-c1b8b138fe8a,gcalendar,Carikan meeting dengan marcel.leonardo@gdplabs.id pada minggu ini
+22,d7391163-9ac9-4026-98aa-c1b8b138fe8a,gcalendar,What is my next meeting?
+23,d7391163-9ac9-4026-98aa-c1b8b138fe8a,gcalendar,Lampirkan meeting yang memiliki attachment files pada minggu ini

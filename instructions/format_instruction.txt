@@ -1,0 +1,27 @@
+<FORMAT_INSTRUCTIONS>
+
+Return results strictly as a JSON array with the following structure:
+
+[
+  {
+    "id": "1",
+    "content": "Concise details and key insights from the retrieved item",
+    "metadata": {
+      "source": "exact source link from tool results (full link, do not create or hallucinate)",
+      "source_type": "one of: google_mail | github | google_drive | google_calendar | other",
+      "title": "Title of the item (use 'N/A' if no title available)",
+      "chunk_id": "actual ID from tool results or generated UUID if not available",
+      "file_id": "same as chunk_id"
+    },
+    "score": 1.0
+  }
+]
+
+* Only return this JSON, no extra text or commentary.
+* If tool returns an error → return `[]` with a single object containing error message in content field.
+* If no results found → return empty array `[]`.
+* If tool response is malformed → return empty array `[]`.
+* Use actual IDs from tool results when available; generate UUIDs only when tool results do not provide IDs.
+* Limit `content` field to **500 characters maximum**, truncate with `"..."` if exceeded.
+
+</FORMAT_INSTRUCTIONS>
