@@ -32,7 +32,12 @@ def main():
     log_execution_info(args)
 
     # Create executor and run tests
-    executor = AIPTestExecutor(args.test_cases, args.output, args.specific_ids)
+    combine_format = (
+        not args.no_format
+    )  # Default is True, unless --no-format is specified
+    executor = AIPTestExecutor(
+        args.test_cases, args.output, args.specific_ids, combine_format
+    )
 
     if args.sequential:
         # Run sequentially

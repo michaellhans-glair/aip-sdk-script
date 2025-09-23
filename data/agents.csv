@@ -3,3 +3,4 @@ id,name,type,framework,version
 d7391163-9ac9-4026-98aa-c1b8b138fe8a,"[SS v2] Google Calendar Agent",config,langchain,1.0.0
 0f5c377c-881e-4b0d-a0f6-118e62afc461,"[SS v2] Google Drive Agent",config,langchain,1.0.0
 b944ae0d-e280-4ff9-b16f-9c543ed0ce73,"[SS v2] Google Mail Agent",config,langchain,1.0.0
+e82c7b30-9345-4dbf-8642-331ffd3b9d41,"[SS] Chief Retrieval Agent",config,langchain,1.0.0

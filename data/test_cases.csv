@@ -3,7 +3,7 @@ id,agent_id,codename,prompt
 2,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Show emails from harisno@gdplabs.id
 3,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Show emails sent to ticket@gdplabs.id
 4,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Show emails from January 1, 2025 to January 31, 2025
-5,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Show emails with label 'CATAPA Persetujuan'
+5,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Show emails with label 'Alert'
 6,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Show emails that include attachments
 7,b944ae0d-e280-4ff9-b16f-9c543ed0ce73,gmail,Show unread emails from harisno@gdplabs.id
 8,0f5c377c-881e-4b0d-a0f6-118e62afc461,gdrive,cari dan list 3 dokumen yang berjudul PRD
@@ -22,3 +22,5 @@ id,agent_id,codename,prompt
 21,d7391163-9ac9-4026-98aa-c1b8b138fe8a,gcalendar,Carikan meeting dengan marcel.leonardo@gdplabs.id pada minggu ini
 22,d7391163-9ac9-4026-98aa-c1b8b138fe8a,gcalendar,What is my next meeting?
 23,d7391163-9ac9-4026-98aa-c1b8b138fe8a,gcalendar,Lampirkan meeting yang memiliki attachment files pada minggu ini
+24,e82c7b30-9345-4dbf-8642-331ffd3b9d41,chief,List all upcoming meetings tomorrow and what document should I read before the meeting?
+25,e82c7b30-9345-4dbf-8642-331ffd3b9d41,chief,List all relevant documents & PRs with Smart Search BOSA Connector in Github and Google Drive

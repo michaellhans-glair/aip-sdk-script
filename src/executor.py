@@ -23,11 +23,39 @@ class AIPTestExecutor:
         test_cases_file="data/test_cases.csv",
         output_dir="output",
         specific_ids=None,
+        combine_format_instructions=True,
     ):
         self.test_cases_file = test_cases_file
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True)
         self.specific_ids = specific_ids
+        self.combine_format_instructions = combine_format_instructions
+        self.format_instructions = (
+            self._load_format_instructions() if combine_format_instructions else ""
+        )
+
+    def _load_format_instructions(self):
+        """Load format instructions from the format_instruction.txt file"""
+        try:
+            format_file = Path("instructions/format_instruction.txt")
+            if format_file.exists():
+                with open(format_file, "r", encoding="utf-8") as f:
+                    return f.read().strip()
+            else:
+                logger.warning(
+                    "Format instruction file not found at instructions/format_instruction.txt"
+                )
+                return ""
+        except Exception as e:
+            logger.error(f"Error loading format instructions: {e}")
+            return ""
+
+    def _combine_prompt_with_format_instructions(self, prompt):
+        """Combine the user prompt with format instructions"""
+        if self.combine_format_instructions and self.format_instructions:
+            return f"{prompt}\n\n{self.format_instructions}"
+        else:
+            return prompt
 
     def read_test_cases(self):
         """Read test cases from CSV file"""
@@ -78,8 +106,19 @@ class AIPTestExecutor:
     def execute_agent(self, agent_id, prompt, test_case_id):
         """Execute agent with given prompt using AIP SDK"""
         try:
+            # Combine prompt with format instructions
+            combined_input = self._combine_prompt_with_format_instructions(prompt)
+
             # Use aip agents run command with --verbose flag
-            cmd = ["aip", "agents", "run", agent_id, "--input", prompt, "--verbose"]
+            cmd = [
+                "aip",
+                "agents",
+                "run",
+                agent_id,
+                "--input",
+                combined_input,
+                "--verbose",
+            ]
 
             logger.info(f"[ID {test_case_id}] Executing: {' '.join(cmd)}")
 
