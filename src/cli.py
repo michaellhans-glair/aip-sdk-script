@@ -43,6 +43,11 @@ def create_parser():
         action="store_true",
         help="Run test cases sequentially instead of in parallel",
     )
+    parser.add_argument(
+        "--no-format",
+        action="store_true",
+        help="Disable automatic inclusion of format instructions with prompts",
+    )
 
     return parser
 
