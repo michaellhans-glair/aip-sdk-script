@@ -24,8 +24,10 @@ class AIPTestExecutor:
         output_dir="output",
         specific_ids=None,
         combine_format_instructions=True,
+        agents_file="data/agents.csv",
     ):
         self.test_cases_file = test_cases_file
+        self.agents_file = agents_file
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True)
         self.specific_ids = specific_ids
@@ -33,6 +35,22 @@ class AIPTestExecutor:
         self.format_instructions = (
             self._load_format_instructions() if combine_format_instructions else ""
         )
+        self.codename_to_agent_id = self._load_agents_mapping()
+
+    def _load_agents_mapping(self):
+        """Load agents mapping from CSV file to create codename to agent_id mapping"""
+        codename_to_agent_id = {}
+        try:
+            with open(self.agents_file, "r", encoding="utf-8") as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    codename_to_agent_id[row["codename"]] = row["id"]
+            logger.info(
+                f"Loaded {len(codename_to_agent_id)} agents from {self.agents_file}"
+            )
+        except Exception as e:
+            logger.error(f"Error loading agents mapping: {e}")
+        return codename_to_agent_id
 
     def _load_format_instructions(self):
         """Load format instructions from the format_instruction.txt file"""
@@ -64,10 +82,19 @@ class AIPTestExecutor:
             with open(self.test_cases_file, "r", encoding="utf-8") as file:
                 reader = csv.DictReader(file)
                 for row in reader:
+                    codename = row["codename"]
+                    agent_id = self.codename_to_agent_id.get(codename)
+
+                    if not agent_id:
+                        logger.warning(
+                            f"No agent found for codename '{codename}' in test case {row['id']}"
+                        )
+                        continue
+
                     test_case = {
                         "id": row["id"],
-                        "agent_id": row["agent_id"],
-                        "codename": row["codename"],
+                        "agent_id": agent_id,
+                        "codename": codename,
                         "prompt": row["prompt"],
                     }
 

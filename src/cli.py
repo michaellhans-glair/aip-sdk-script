@@ -48,6 +48,11 @@ def create_parser():
         action="store_true",
         help="Disable automatic inclusion of format instructions with prompts",
     )
+    parser.add_argument(
+        "--prod",
+        action="store_true",
+        help="Use production test cases and agents (data/test_cases_prod.csv)",
+    )
 
     return parser
 
@@ -70,6 +75,10 @@ def parse_arguments():
     """Parse command line arguments and return parsed args"""
     parser = create_parser()
     args = parser.parse_args()
+
+    # Handle production flag
+    if args.prod:
+        args.test_cases = "data/test_cases_prod.csv"
 
     # Handle list command
     if args.list:

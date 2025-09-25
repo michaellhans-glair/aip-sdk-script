@@ -9,6 +9,8 @@ Execute multiple AIP SDK agent test cases in parallel from a CSV file with progr
 - 📁 **Organized Output**: Results saved with descriptive filenames
 - 🎯 **Selective Testing**: Run specific test case IDs or ranges
 - 🎨 **Colorful Output**: Easy-to-read terminal output
+- 🔄 **Environment Support**: Separate development and production testing
+- 🏷️ **Codename-based**: Use friendly codenames instead of agent IDs
 
 ## Quick Start
 
@@ -23,9 +25,16 @@ Execute multiple AIP SDK agent test cases in parallel from a CSV file with progr
 
 2. **Create test cases file** (`data/test_cases.csv`):
    ```csv
-   id,agent_id,codename,prompt
-   1,ecca3133-e89a-49e2-8e77-03a68d13c648,gmail,Find emails with subject containing 'Project report'
-   2,6907666c-1be2-46ba-86fa-79f24d66348a,gdrive,Find documents related to "Deep Research"
+   id,codename,prompt
+   1,gmail,Find emails with subject containing 'Project report'
+   2,gdrive,Find documents related to "Deep Research"
+   ```
+
+   **Create agents file** (`data/agents.csv`):
+   ```csv
+   id,name,codename,type,framework,version
+   9c0ae488-4d87-4b5c-a91f-5d3b255b2c02,"[SS v2] Github Agent",github,config,langchain,1.0.0
+   a6555bea-7860-4c06-bbf8-4be3030534e6,"[SS v2 Prod] Google Mail Agent",gmail-prod,config,langchain,1.0.0
    ```
 
 3. **Setup the GL AIP SDK** using the command below:
@@ -35,32 +44,70 @@ Execute multiple AIP SDK agent test cases in parallel from a CSV file with progr
 
 4. **Run tests:**
    ```bash
-   # Run all test cases
+   # Run all test cases (development mode)
    python main.py
+
+   # Run production test cases
+   python main.py --prod
 
    # Run specific IDs
    python main.py --ids "1,3,5"
+
+   # Run production tests with specific IDs
+   python main.py --prod --ids "1,3,5"
 
    # Run with 3 workers
    python main.py --workers 3
 
    # List available test cases
    python main.py --list
+
+   # List production test cases
+   python main.py --prod --list
    ```
-   Or, using `make run`:
+   Or, using `make`:
    ```bash
-   # Run all test cases
+   # Run all development test cases
    make run
 
-   # Run specific IDs
+   # Run all production test cases
+   make run-prod
+
+   # Run specific IDs (development)
    make run ARGS="--ids \"1,3,5\""
+
+   # Run specific IDs (production)
+   make run-prod ARGS="--ids \"1,3,5\""
 
    # Run with 3 workers
    make run ARGS="--workers 3"
 
-   # List available test cases
-   make run ARGS="--list"
+   # Run production tests sequentially
+   make run-prod ARGS="--sequential"
+
+   # List development test cases
+   make list
+
+   # List production test cases
+   make list-prod
+
+   # Show all available make targets
+   make help
    ```
+
+## Environment Modes
+
+The script supports two environment modes:
+
+### Development Mode (Default)
+- Uses `data/test_cases.csv` and development agents
+- Agent codenames: `github`, `gmail`, `gdrive`, `gcalendar`, `chief`
+- Safe for testing and development
+
+### Production Mode (`--prod` flag)
+- Uses `data/test_cases_prod.csv` and production agents
+- Agent codenames: `github-prod`, `gmail-prod`, `gdrive-prod`, `gcalendar-prod`, `chief-prod`
+- For production environment testing
 
 5. **Update agent list from source (optional):**
    ```bash
@@ -83,6 +130,8 @@ Execute multiple AIP SDK agent test cases in parallel from a CSV file with progr
 | `--workers`, `-w` | Number of parallel workers | `5` |
 | `--sequential`, `-s` | Run sequentially instead of parallel | Parallel mode |
 | `--list`, `-l` | List available test cases and exit | - |
+| `--prod` | Use production test cases and agents | Development mode |
+| `--no-format` | Disable automatic format instructions | Format instructions enabled |
 
 ## Output
 
