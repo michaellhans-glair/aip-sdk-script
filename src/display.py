@@ -8,13 +8,18 @@ from .utils import Colors
 logger = logging.getLogger(__name__)
 
 
-def display_execution_summary(results, output_dir):
+def display_execution_summary(results, output_dir, is_production=False):
     """Display the final execution summary"""
     if not results:
         return
 
     print(f"\n{Colors.BOLD}{Colors.CYAN}{'='*60}{Colors.END}")
-    print(f"{Colors.BOLD}{Colors.WHITE}📊 EXECUTION SUMMARY 📊{Colors.END}")
+    if is_production:
+        print(
+            f"{Colors.BOLD}{Colors.WHITE}🚀 PRODUCTION EXECUTION SUMMARY 🚀{Colors.END}"
+        )
+    else:
+        print(f"{Colors.BOLD}{Colors.WHITE}📊 EXECUTION SUMMARY 📊{Colors.END}")
     print(f"{Colors.BOLD}{Colors.CYAN}{'='*60}{Colors.END}")
 
     success_rate = results["successful"] / results["total"] * 100
@@ -82,6 +87,13 @@ def display_execution_summary(results, output_dir):
 def log_execution_info(args):
     """Log execution configuration information"""
     logger.info("Starting AIP Test Executor")
+
+    # Check if running in production mode
+    if hasattr(args, "prod") and args.prod:
+        logger.info("🚀 Running in PRODUCTION mode")
+    else:
+        logger.info("🧪 Running in DEVELOPMENT mode")
+
     logger.info(f"Test cases file: {args.test_cases}")
     logger.info(f"Output directory: {args.output}")
     if args.specific_ids:

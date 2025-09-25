@@ -47,7 +47,7 @@ def main():
         results = executor.run_all_tests(args.workers)
 
     # Display results
-    display_execution_summary(results, args.output)
+    display_execution_summary(results, args.output, getattr(args, "prod", False))
 
 
 if __name__ == "__main__":

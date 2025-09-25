@@ -1,6 +1,11 @@
-id,name,type,framework,version
-9c0ae488-4d87-4b5c-a91f-5d3b255b2c02,"[SS v2] Github Agent",config,langchain,1.0.0
-d7391163-9ac9-4026-98aa-c1b8b138fe8a,"[SS v2] Google Calendar Agent",config,langchain,1.0.0
-0f5c377c-881e-4b0d-a0f6-118e62afc461,"[SS v2] Google Drive Agent",config,langchain,1.0.0
-b944ae0d-e280-4ff9-b16f-9c543ed0ce73,"[SS v2] Google Mail Agent",config,langchain,1.0.0
-e82c7b30-9345-4dbf-8642-331ffd3b9d41,"[SS] Chief Retrieval Agent",config,langchain,1.0.0
+id,name,codename,type,framework,version
+9c0ae488-4d87-4b5c-a91f-5d3b255b2c02,"[SS v2] Github Agent",github,config,langchain,1.0.0
+d7391163-9ac9-4026-98aa-c1b8b138fe8a,"[SS v2] Google Calendar Agent",gcalendar,config,langchain,1.0.0
+0f5c377c-881e-4b0d-a0f6-118e62afc461,"[SS v2] Google Drive Agent",gdrive,config,langchain,1.0.0
+b944ae0d-e280-4ff9-b16f-9c543ed0ce73,"[SS v2] Google Mail Agent",gmail,config,langchain,1.0.0
+e82c7b30-9345-4dbf-8642-331ffd3b9d41,"[SS] Chief Retrieval Agent",chief,config,langchain,1.0.0
+207efb4c-c9fc-4ad1-8efc-583caabdaca2,"[SS v2 Prod] Github Agent",github-prod,config,langchain,1.0.0
+21e0d485-b971-4768-94e0-d145dd1483f0,"[SS v2 Prod] Google Calendar Agent",gcalendar-prod,config,langchain,1.0.0
+a6555bea-7860-4c06-bbf8-4be3030534e6,"[SS v2 Prod] Google Mail Agent",gmail-prod,config,langchain,1.0.0
+9183b415-7de1-4bc2-8b68-d1f00cb19b2b,"[SS v2 Prod] Google Drive Agent",gdrive-prod,config,langchain,1.0.0
+5745e46e-cdc6-415a-a98f-175de52cc4a8,"[SS v2 Prod] Chief Retrieval Agent",chief-prod,config,langchain,1.0.0

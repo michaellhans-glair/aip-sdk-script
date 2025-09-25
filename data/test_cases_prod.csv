@@ -1,0 +1,26 @@
+id,codename,prompt
+1,gmail-prod,Find emails mentioning 'Weekly report'
+2,gmail-prod,Show emails from harisno@gdplabs.id
+3,gmail-prod,Show emails sent to ticket@gdplabs.id
+4,gmail-prod,Show emails from January 1, 2025 to January 31, 2025
+5,gmail-prod,Show emails with label 'Alert'
+6,gmail-prod,Show emails that include attachments
+7,gmail-prod,Show unread emails from harisno@gdplabs.id
+8,gdrive-prod,cari dan list 3 dokumen yang berjudul PRD
+9,gdrive-prod,Tampilkan file yang dibuat atau berhubungan dengan harisno@gdplabs.id
+10,gdrive-prod,find any documents related to "Deep Research"
+11,gdrive-prod,Tampilkan dokumen yang dimodifikasi pada tanggal 1 januari 2025 - 5 januari 2025
+12,gdrive-prod,Find any documents related with BOSA MCP
+13,github-prod,Find repositories with 'smart search' in the name
+14,github-prod,Find open issues mentioning 'authentication error'
+15,github-prod,Show closed issues in repo smart-search
+16,github-prod,Show open issues in repo smart-search
+17,github-prod,Find pull requests mentioning 'refactor API'
+18,gcalendar-prod,Tampilkan meeting di minggu ini dari hari senin sampai jumat (pada jam kerja)
+19,gcalendar-prod,Tampilkan rapat antara Senin 00:00 sampai Minggu 23:59 zona waktu Asia/Jakarta.
+20,gcalendar-prod,Cari meeting dengan michael.hans@gdplabs.id
+21,gcalendar-prod,Carikan meeting dengan marcel.leonardo@gdplabs.id pada minggu ini
+22,gcalendar-prod,What is my next meeting?
+23,gcalendar-prod,Lampirkan meeting yang memiliki attachment files pada minggu ini
+24,chief-prod,List all upcoming meetings tomorrow and what document should I read before the meeting?
+25,chief-prod,List all relevant documents & PRs with Smart Search BOSA Connector in Github and Google Drive
