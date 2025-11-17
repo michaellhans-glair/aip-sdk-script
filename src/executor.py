@@ -4,12 +4,12 @@ AIP Test Executor - Core execution logic for running test cases
 
 import csv
 import json
-import subprocess
 from datetime import datetime
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import logging
 
+from .runner import AIPRunner
 from .utils import thread_safe_print, Colors, sanitize_filename
 
 logger = logging.getLogger(__name__)
@@ -136,45 +136,25 @@ class AIPTestExecutor:
             # Combine prompt with format instructions
             combined_input = self._combine_prompt_with_format_instructions(prompt)
 
-            # Use aip agents run command with --verbose flag
-            cmd = [
-                "aip",
-                "agents",
-                "run",
-                agent_id,
-                "--input",
-                combined_input,
-                "--verbose",
-            ]
+            logger.info(f"[ID {test_case_id}] Executing agent {agent_id} with SDK")
 
-            logger.info(f"[ID {test_case_id}] Executing: {' '.join(cmd)}")
+            # Use the AIPRunner to execute the agent
+            runner = AIPRunner()
+            result = runner.run_agent_sync(agent_id, combined_input, timeout=500)
 
-            # Run the command and capture output (no real-time display)
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                timeout=300,  # 5 minute timeout
-            )
+            return result
 
-            return {
-                "success": result.returncode == 0,
-                "stdout": result.stdout,
-                "stderr": result.stderr,
-                "return_code": result.returncode,
-            }
+        except Exception as e:
+            logger.error(f"[ID {test_case_id}] Error executing agent {agent_id}: {e}")
+            import traceback
 
-        except subprocess.TimeoutExpired:
-            logger.error(f"[ID {test_case_id}] Timeout executing agent {agent_id}")
+            error_trace = traceback.format_exc()
             return {
                 "success": False,
                 "stdout": "",
-                "stderr": "Execution timeout (5 minutes)",
+                "stderr": f"{str(e)}\n\n{error_trace}",
                 "return_code": -1,
             }
-        except Exception as e:
-            logger.error(f"[ID {test_case_id}] Error executing agent {agent_id}: {e}")
-            return {"success": False, "stdout": "", "stderr": str(e), "return_code": -1}
 
     def save_result(self, test_case, execution_result, output_file):
         """Save execution result to output file"""
@@ -208,7 +188,7 @@ class AIPTestExecutor:
         # Record start time
         start_time = datetime.now()
 
-        # Execute the agent (always with --verbose flag for AIP SDK)
+        # Execute the agent using GLAIP SDK
         execution_result = self.execute_agent(
             test_case["agent_id"], test_case["prompt"], test_case["id"]
         )
@@ -247,7 +227,7 @@ class AIPTestExecutor:
             f"{Colors.BOLD}{Colors.YELLOW}⚡ Running up to {max_workers} test cases simultaneously{Colors.END}"
         )
         thread_safe_print(
-            f"{Colors.BOLD}{Colors.BLUE}📊 AIP agents will run with --verbose flag for detailed output{Colors.END}"
+            f"{Colors.BOLD}{Colors.BLUE}📊 AIP agents will run using GLAIP SDK with streaming output{Colors.END}"
         )
         thread_safe_print()
 
