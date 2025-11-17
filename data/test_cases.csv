@@ -24,3 +24,14 @@ id,codename,prompt
 23,gcalendar,Lampirkan meeting yang memiliki attachment files pada minggu ini
 24,chief,List all upcoming meetings tomorrow and what document should I read before the meeting?
 25,chief,List all relevant documents & PRs with Smart Search BOSA Connector in Github and Google Drive
+26,gcalendar,"Give me all my accepted appointments for this week.
+Instructions:
+- Only include appointments that I have accepted.
+- List titles of appointments, sorted from earliest (Monday) to latest (Saturday).
+- Group appointments with the exact same title into a single entry.
+- Exclude any items where the title is ""busy"".
+- Output the list in raw markdown format.
+
+Also provide a summary:
+1. The total number of meetings
+2. The total number of meeting hours."
