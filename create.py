@@ -32,18 +32,20 @@ load_dotenv()
 AIP_BASE_URL = os.getenv("AIP_API_URL")
 AIP_API_KEY = os.getenv("AIP_API_KEY")
 
-
+# Please update the tool ID with the current AIP environment tool ID
 tool_id = "18777d0f-5fd3-4570-a282-bc3c18333e0b"
 
+# Please update the MCP IDs below AFTER creating the MCPs
 mcp_github_id = "90d0788a-53e9-4953-9c13-0fca1c0eafc2"
 mcp_google_calendar_id = "9520c4e2-ccb7-40aa-8925-5275185c18a0"
 mcp_google_mail_id = "62dff95e-5f3a-4890-a9c7-b83f1455db74"
 mcp_google_drive_id = "fc4ef652-a14f-4b91-b05c-804bdbc13fa8"
 
-github_agent_id = "207efb4c-c9fc-4ad1-8efc-583caabdaca2"
-google_calendar_agent_id = "21e0d485-b971-4768-94e0-d145dd1483f0"
-google_mail_agent_id = "a6555bea-7860-4c06-bbf8-4be3030534e6"
-google_drive_agent_id = "9183b415-7de1-4bc2-8b68-d1f00cb19b2b"
+# For chief retrieval agent creation, please update the agent IDs below AFTER creating those agents
+# github_agent_id = "207efb4c-c9fc-4ad1-8efc-583caabdaca2"
+# google_calendar_agent_id = "21e0d485-b971-4768-94e0-d145dd1483f0"
+# google_mail_agent_id = "a6555bea-7860-4c06-bbf8-4be3030534e6"
+# google_drive_agent_id = "9183b415-7de1-4bc2-8b68-d1f00cb19b2b"
 
 
 def get_agent_instruction(name):
@@ -85,17 +87,17 @@ agents = [
         "tools": [tool_id],
         "mcps": [mcp_google_drive_id],
     },
-    {
-        "name": "[SS v2] Chief Retrieval Agent",
-        "instruction": get_agent_instruction("chief"),
-        "tools": [tool_id],
-        "agents": [
-            github_agent_id,
-            google_calendar_agent_id,
-            google_mail_agent_id,
-            google_drive_agent_id,
-        ],
-    },
+    # {
+    #     "name": "[SS v2] Chief Retrieval Agent",
+    #     "instruction": get_agent_instruction("chief"),
+    #     "tools": [tool_id],
+    #     "agents": [
+    #         github_agent_id,
+    #         google_calendar_agent_id,
+    #         google_mail_agent_id,
+    #         google_drive_agent_id,
+    #     ],
+    # },
 ]
 
 
@@ -135,5 +137,5 @@ def delete_agents():
 
 
 if __name__ == "__main__":
-    delete_agents()
-    # main()
+    # delete_agents()
+    main()
